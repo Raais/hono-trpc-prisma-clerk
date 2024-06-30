@@ -1,7 +1,10 @@
 import { initTRPC, TRPCError } from '@trpc/server';
 import { TRPCHonoContext } from './context';
+import superjson from 'superjson';
 
-export const t = initTRPC.context<TRPCHonoContext>().create();
+export const t = initTRPC.context<TRPCHonoContext>().create({
+    transformer: superjson,
+});
 export const router = t.router;
 
 export const publicProcedure = t.procedure;
