@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "hono-backend",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "export": "tsup --config export/builder/tsup.config.ts"
