@@ -1,4 +1,4 @@
-## npm run export
+## bun run export
 
 Change Context Type to any before generating definitions
 
