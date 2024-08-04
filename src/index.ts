@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { trpcServer } from '@hono/trpc-server'
 import { appRouter } from './router'
-import { renderTrpcPanel } from 'trpc-panel'
+import { renderTrpcPanel } from '@metamorph/trpc-panel'
 import { clerkMiddleware } from '@hono/clerk-auth'
 import { createTRPCHonoContext } from './lib/context'
 
