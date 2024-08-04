@@ -16,6 +16,12 @@ export const usersRouter = router({
       return me.fullName;
     }
   ),
+
+  getHello: publicProcedure
+    .query(async ({ input, ctx }) => {
+      return "Hello from Hono";
+    }
+  ),
     
   createUser: publicProcedure
     .input(
