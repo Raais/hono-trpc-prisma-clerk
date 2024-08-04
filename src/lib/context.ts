@@ -4,6 +4,7 @@ import { ClerkClient } from '@clerk/backend'
 import { type inferAsyncReturnType } from '@trpc/server'
 import { type FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import { prisma } from './db'
+import { building } from '../../export/builder/switch'
 
 export const createTRPCHonoContext = async (_c: FetchCreateContextFnOptions, c: Context) => {
     const db = prisma
@@ -23,4 +24,4 @@ export const createTRPCHonoContext = async (_c: FetchCreateContextFnOptions, c: 
     }
 }
 
-export type TRPCHonoContext = inferAsyncReturnType<typeof createTRPCHonoContext>
+export type TRPCHonoContext = building extends true ? any : inferAsyncReturnType<typeof createTRPCHonoContext>;

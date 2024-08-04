@@ -15,6 +15,7 @@ app.use(cors({
 
 app.use('*', clerkMiddleware())
 
+/* Used by client */
 app.use(
   '/trpc/*',
   trpcServer({
@@ -23,11 +24,19 @@ app.use(
   }),
 )
 
+/* Used by client - development */
+app.get('/trpci', async (c) => {
+  const dts = await Bun.file("./export/dist/index.d.mts").text();
+  const mjs = await Bun.file("./export/dist/index.mjs").text();
+  return c.json({dts: btoa(dts), mjs: btoa(mjs)});
+})
+
+/* Optional */
 app.get('/panel', (c) => {
   return c.html(renderTrpcPanel(appRouter, { url: "http://localhost:4000/trpc" }))
 })
 
 export default { 
   port: 4000, 
-  fetch: app.fetch, 
+  fetch: app.fetch,
 }

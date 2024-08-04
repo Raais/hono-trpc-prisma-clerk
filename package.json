@@ -1,8 +1,9 @@
 {
-  "name": "hono-backend",
+  "name": "hono-trpc-prisma-clerk",
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
-    "export": "tsup --config export/builder/tsup.config.ts"
+    "dev": "bun run export && bun run --hot src/index.ts",
+    "server": "bun run --hot src/index.ts",
+    "export": "bun export/builder/setswitch.ts --true && tsup --config export/builder/tsup.config.ts && bun export/builder/setswitch.ts"
   },
   "dependencies": {
     "@clerk/backend": "^1.2.4",
